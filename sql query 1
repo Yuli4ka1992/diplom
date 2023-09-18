@@ -1,0 +1,6 @@
+select c.login,
+       count(o.phone) as orders
+from "Couriers" as c
+join "Orders" as o on c.id = o."courierId"
+where o."inDelivery" = true
+group by c.login;

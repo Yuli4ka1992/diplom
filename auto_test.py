@@ -13,7 +13,7 @@ order = create_order.json() # сохранение трека
 track = order['track']      # в переменную
 
 check_order = get_order_info(track) # проверка заказа
-if check_order.status_code == 200:     # по треку
-    print('test passed')
+assert check_order.status_code == 200     # по треку
+print('test passed')
 
 # Юлия Жирова, 8-я когорта — Финальный проект. Инженер по тестированию плюс

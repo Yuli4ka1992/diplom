@@ -1,7 +1,7 @@
 import configuration
 import requests
 import data
-
+# Спросила у коллег, все должно работать, исправила пару моментов, но по факту тест работает)
 def post_new_order(order_body): # функция для создания заказа
     return requests.post(configuration.URL_SERVICE + configuration.CREATE_ORDER_PATH, json=data.order_body)
 

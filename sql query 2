@@ -1,6 +1,6 @@
 select track,
-       case when finished = true then '2'
-            when canсelled = true then '-1'
+       case when "finished" = true then '2'
+            when "canсelled" = true then '-1'
             when "inDelivery" = true then '1'
        end status
 from "Orders";

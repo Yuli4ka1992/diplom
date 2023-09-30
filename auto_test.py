@@ -1,19 +1,10 @@
-import configuration
-import requests
+import sender_stand_request
 import data
-# Спросила у коллег, все должно работать, исправила пару моментов, но по факту тест работает)
-def post_new_order(order_body): # функция для создания заказа
-    return requests.post(configuration.URL_SERVICE + configuration.CREATE_ORDER_PATH, json=data.order_body)
 
-def get_order_info(t): # функция для проверки заказа про треку
-    return requests.get(configuration.URL_SERVICE + configuration.GET_ORDER_INFO + '?t=' + str(t))
-
-create_order = post_new_order(data.order_body) # создание заказа
-order = create_order.json() # сохранение трека
-track = order['track']      # в переменную
-
-check_order = get_order_info(track) # проверка заказа
-assert check_order.status_code == 200     # по треку
-print('test passed')
+def test_get_order_by_track():
+    order = sender_stand_request.post_new_order(data.order_body) # создание заказа
+    track = order.json()["track"]  # сохранение
+    check_order = sender_stand_request.get_order_info(track)
+    assert check_order.status_code == 200
 
 # Юлия Жирова, 8-я когорта — Финальный проект. Инженер по тестированию плюс
